@@ -1,18 +1,9 @@
-// Dashboard Component
-// The Dashboard component should manage the entire application state
-// The state should contain a notes array
-// It should have a bound addNote(note) method that adds a note to state.notes
-// each note that gets added should have the following data
-// id: always should contain the result of uuid.v1()
-// editing: false by default
-// completed: false by default
-// content: user provided content
-// title: user provided title
-// It should have a bound removeNote(note) method that removes a note from state.notes based on its id
-
 import React from 'react';
-import {Link} from 'react-router-dom';
-import uuid from 'uuid/v4';
+import uuid from 'uuid/v1';
+
+import Form from './../note-create-form/index';
+import List from './../note-list/index';
+
 
 export default class Notes extends React.Component {
 
@@ -21,34 +12,61 @@ export default class Notes extends React.Component {
     this.state = {
       notes: [],
       id: '',
+      title: '',
+      content: '',
       editing: false,
       completed: false,
-      content: '',
-      title: '',
     };
     this.addNote = this.addNote.bind(this);
     this.removeNote = this.removeNote.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  addNote(note) {
-    let words = {};
-    words[note.id] = note.text;
-    this.setState(Object.assign(this.state.notes, words));
+  handleChange(e) {
+    let id = uuid();
+    this.setState({id, [e.target.id]: e.target.value});
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.addNote();
+  }
+
+  addNote() {
+    let items = {
+      id: this.state.id,
+      title: this.state.title,
+      content: this.state.content,
+      editing: this.state.editing,
+      completed: this.state.completed,
+    };
+    let arr = [...this.state.notes, items];
+    this.setState({notes: arr}
+    );
+  }
 
   removeNote(note) {
+    let arr = [...this.state.notes];
 
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i].id === note) {
+        arr.splice(i, 1);
+      }
+    }
+    this.setState({notes: arr});
   }
-
 
 
   render() {
     return (
       <React.Fragment>
 
+        <Form
+          handleSubmit={this.handleSubmit} handleChange={this.handleChange}
+        />
 
-
+        <List notes={this.state.notes} remove={this.removeNote}/>
 
       </React.Fragment>
     );

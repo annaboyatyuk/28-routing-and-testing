@@ -10,10 +10,10 @@ export default class Nav extends React.Component {
         <nav>
           <ul>
             <li>
-              <NavLink to='/home'>home</NavLink>
+              <NavLink to='/'>HOME</NavLink>
             </li>
             <li>
-              <NavLink to='/notes'>notes</NavLink>
+              <NavLink to='/dashboard'>DASHBOARD</NavLink>
             </li>
           </ul>
         </nav>
