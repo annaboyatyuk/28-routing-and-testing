@@ -10,6 +10,21 @@
     "postinstall": "npm run build",
     "start": "node ./src/main.js"
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testPathIgnorePatterns": [
+      "jest-setup.js"
+    ],
+    "setupFiles": [
+      "./__tests__/jest-setup.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "testURL": "http://localhost"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/annaboyatyuk/28-routing-and-testing.git"
@@ -26,6 +41,7 @@
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
