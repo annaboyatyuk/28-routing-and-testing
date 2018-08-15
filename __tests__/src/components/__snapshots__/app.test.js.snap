@@ -1,5 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<App/> (Snapshot Test Dashboard form snapshot test 1`] = `
+Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      TITLE
+    </label>
+    <input
+      id="title"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      NOTE
+    </label>
+    <input
+      id="content"
+      onChange={[Function]}
+      type="text"
+    />
+    <input
+      type="submit"
+    />
+  </form>,
+  <ul />,
+]
+`;
+
+exports[`<App/> (Snapshot Test Note create form snapshot test 1`] = `
+<form>
+  <label>
+    TITLE
+  </label>
+  <input
+    id="title"
+    type="text"
+  />
+  <label>
+    NOTE
+  </label>
+  <input
+    id="content"
+    type="text"
+  />
+  <input
+    type="submit"
+  />
+</form>
+`;
+
 exports[`<App/> (Snapshot Test renders 1`] = `
 Array [
   <nav>
